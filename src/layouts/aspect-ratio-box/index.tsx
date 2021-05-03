@@ -22,11 +22,11 @@ const Content = styled.div`
 const AspectRatioBox: FunctionComponent<{
   children: ReactNode;
   type?: string;
-}> = ({ type = '1:1', children }) => {
+}> = ({ type = '1:1', children, ...props }) => {
   const [width, height] = type.split(':').map(Number);
 
   return (
-    <Container>
+    <Container {...props}>
       <AspectRatio width={width} height={height} />
       <Content>{children}</Content>
     </Container>
