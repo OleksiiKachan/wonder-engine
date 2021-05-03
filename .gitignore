@@ -81,3 +81,5 @@ g-cloud
 
 # Storybook build folder
 storybook-static
+
+playground/
