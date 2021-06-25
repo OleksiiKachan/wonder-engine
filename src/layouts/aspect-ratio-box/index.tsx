@@ -1,13 +1,10 @@
 import React, { ReactNode, FunctionComponent } from 'react';
 import styled from 'styled-components';
 
-const Container = styled.div`
+const AspectRatio = styled.div<{ width: Number; height: Number }>`
   height: 0;
   overflow: hidden;
   position: relative;
-`;
-
-const AspectRatio = styled.div<{ width: Number; height: Number }>`
   padding-top: ${({ width, height }) => `calc(${width} / ${height} * 100%)`};
 `;
 
@@ -26,10 +23,11 @@ const AspectRatioBox: FunctionComponent<{
   const [width, height] = type.split(':').map(Number);
 
   return (
-    <Container {...props}>
-      <AspectRatio width={width} height={height} />
-      <Content>{children}</Content>
-    </Container>
+    <div {...props}>
+      <AspectRatio width={width} height={height}>
+        <Content>{children}</Content>
+      </AspectRatio>
+    </div>
   );
 };
 
