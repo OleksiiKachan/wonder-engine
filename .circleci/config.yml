@@ -55,3 +55,6 @@ workflows:
           requires:
             - test
             - build
+          filter:
+            only:
+              - release
