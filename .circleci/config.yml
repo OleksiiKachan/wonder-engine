@@ -47,22 +47,11 @@ jobs:
 workflows:
   publish:
     jobs:
-      - test:
-          filters:
-            tags:
-              only: /^v.*/
+      - test
       - build:
           requires:
             - test
-          filters:
-            tags:
-              only: /^v.*/
       - deploy:
           requires:
             - test
             - build
-          filters:
-            tags:
-              only: /^v.*/
-            branches:
-              ignore: /.*/
