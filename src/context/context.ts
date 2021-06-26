@@ -1,8 +1,16 @@
-import { createContext } from 'react';
+import { createContext, ReactNode } from 'react';
 
-interface WonderEngineContext {}
+export interface WonderEngineContext {
+  Link: ReactNode;
+}
 
-const defaultContext: WonderEngineContext = {};
+const defaultContext: WonderEngineContext = {
+  Link: () => {
+    throw new Error(
+      `You must specify Link component inn WonderEngineProvider config`
+    );
+  },
+};
 
 const Context = createContext<WonderEngineContext>(defaultContext);
 
