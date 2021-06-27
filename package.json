@@ -33,7 +33,7 @@
     "babel-plugin-styled-components": "^1.12.0",
     "commitlint": "^12.1.4",
     "cz-customizable": "^6.3.0",
-    "eslint": "^7.25.0",
+    "eslint": "^7.29.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "husky": "^6.0.0",
