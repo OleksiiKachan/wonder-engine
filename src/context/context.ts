@@ -1,7 +1,7 @@
-import { createContext, ReactNode } from 'react';
+import { createContext, FunctionComponent, ComponentClass } from 'react';
 
 export interface WonderEngineContext {
-  Link: ReactNode;
+  Link: string | FunctionComponent | ComponentClass;
 }
 
 const defaultContext: WonderEngineContext = {
