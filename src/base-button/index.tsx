@@ -1,12 +1,11 @@
-import {
+import React, {
   ComponentClass,
-  createElement,
   FunctionComponent,
   MouseEvent,
   forwardRef,
 } from 'react';
 
-import { useWonderEngineContext } from '../context';
+import LinkContainer from '../link-container';
 
 interface BaseButton
   extends FunctionComponent<{
@@ -36,11 +35,8 @@ const BaseButton: BaseButton = forwardRef(
     },
     ref
   ) => {
-    const { Link } = useWonderEngineContext();
-
-    let Component: string | FunctionComponent | ComponentClass = 'button';
-
     const commonProps: object = {
+      disabled,
       onClick: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
         if (!loading) {
           onClick(event);
@@ -50,30 +46,27 @@ const BaseButton: BaseButton = forwardRef(
       ref,
     };
 
-    let props: object = { disabled };
+    let props: object = {};
 
     let linkProps = { href, target, rel };
 
     if (component) {
-      Component = component;
       props = {
         ...props,
         ...linkProps,
       };
     } else if (href) {
-      const isExternalLink =
-        typeof href === `string` &&
-        [`http`, `mailto:`, `tel:`].some((sub) => href.includes(sub));
-
-      Component = isExternalLink ? `a` : Link;
       props = { ...linkProps };
     }
 
-    return createElement(
-      Component,
-      { ...commonProps, ...props, ...otherProps },
-      children
-    );
+    const buttonProps = {
+      ...commonProps,
+      ...props,
+      ...otherProps,
+      component: component || 'button',
+    };
+
+    return <LinkContainer {...buttonProps}>{children}</LinkContainer>;
   }
 );
 
