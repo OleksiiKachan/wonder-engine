@@ -1,6 +1,6 @@
 {
   "name": "wonder-engine",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Engine for ui kits and design systems",
   "main": "dist/wonder-engine.js",
   "repository": "https://github.com/OleksiiKachan/wonder-engine",
