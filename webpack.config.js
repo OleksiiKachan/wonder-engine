@@ -1,32 +1,35 @@
 const path = require('path');
 
-module.exports = {
-  entry: './src/index.ts',
+const config = {
+  entry: {
+    'wonder-engine': './src/index.ts',
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'wonder-engine.js',
-    library: 'wonder-engine',
-    library: {
-      name: 'wonder-engine',
-      type: 'umd',
-    },
+    filename: '[name].js',
+    libraryTarget: 'umd',
+    globalObject: `typeof self !== 'undefined' ? self : this`,
   },
   module: {
     rules: [
-      {
-        test: /\.(js|jsx|tsx|ts)$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-      },
+      { test: /\.[jt]sx?$/, exclude: /node_modules/, loader: 'babel-loader' },
     ],
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx', '.tsx', '.ts'],
+    extensions: ['.ts', '.tsx', '.js'],
   },
-  externals: {
-    react: 'react',
-    reactDOM: 'react-dom',
-    'styled-components': 'styled-components',
+  devtool: 'source-map',
+  stats: {
+    children: false,
   },
+  externals: [
+    {
+      react: 'react',
+      'react-dom': 'react-dom',
+      'styled-components': 'styled-components',
+    },
+  ],
   mode: process.env.NODE_ENV,
 };
+
+module.exports = config;
