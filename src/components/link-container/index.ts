@@ -5,7 +5,7 @@ import {
   forwardRef,
 } from 'react';
 
-import { useWonderEngineContext } from '../context';
+import { useWonderEngineContext } from '../../context';
 
 interface LinkContainer
   extends FunctionComponent<{
