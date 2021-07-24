@@ -7,7 +7,7 @@ export default {
   title: 'Components/AspectRatioBox',
   component: AspectRatioBox,
   argTypes: {
-    type: { control: 'select', options: ['1:1', '16:9'] },
+    type: { control: 'select', options: ['1:1', '16:9'], defaultValue: '1:1' },
   },
 } as ComponentMeta<typeof AspectRatioBox>;
 
