@@ -44,7 +44,7 @@
     "babel-plugin-styled-components": "^1.13.1",
     "commitlint": "^12.1.4",
     "cz-customizable": "^6.3.0",
-    "eslint": "^7.30.0",
+    "eslint": "^7.31.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "husky": "^7.0.1",
