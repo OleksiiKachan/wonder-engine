@@ -16,8 +16,7 @@
     }
   ],
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "repository": "https://github.com/OleksiiKachan/wonder-engine",
   "author": "Oleksii Kachan",
