@@ -17,7 +17,7 @@ interface LinkContainer
 
 const LinkContainer: LinkContainer = forwardRef(
   ({ component = 'div', href, target, rel, children, ...otherProps }, ref) => {
-    const { Link } = useWonderEngineContext();
+    const context = useWonderEngineContext();
 
     let Component: string | FunctionComponent | ComponentClass = component;
 
@@ -34,7 +34,7 @@ const LinkContainer: LinkContainer = forwardRef(
         typeof href === `string` &&
         [`http`, `mailto:`, `tel:`].some((sub) => href.includes(sub));
 
-      Component = isExternalLink ? `a` : Link;
+      Component = isExternalLink ? `a` : context?.Link || 'a';
       props = { ...linkProps };
     }
 
