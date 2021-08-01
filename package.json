@@ -24,7 +24,7 @@
   "license": "MIT",
   "private": false,
   "engines": {
-    "node": ">= 14"
+    "node": ">=14.17.4"
   },
   "scripts": {
     "start": "tsdx watch",
