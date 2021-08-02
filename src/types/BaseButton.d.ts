@@ -11,4 +11,4 @@ export type BaseButtonProps = {
 } & (ButtonHTMLAttributes | AnchorHTMLAttributes);
 
 export interface IBaseButton
-  extends FunctionComponent<BaseButtonProps & { forwardRef: any }> {}
+  extends FunctionComponent<BaseButtonProps & { forwardedRef: any }> {}

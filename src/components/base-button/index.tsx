@@ -13,7 +13,7 @@ const BaseButton: IBaseButton = ({
   loading = false,
   onClick = () => {},
   children,
-  forwardRef,
+  forwardedRef,
   ...otherProps
 }) => {
   const commonProps: BaseButtonProps = {
@@ -24,7 +24,7 @@ const BaseButton: IBaseButton = ({
       }
     },
     tabIndex: !loading && !disabled ? tabIndex : -1,
-    ref: forwardRef,
+    ref: forwardedRef,
   };
 
   let props: BaseButtonProps = {};
