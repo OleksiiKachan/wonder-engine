@@ -1,5 +1,10 @@
-import React, { forwardRef, FunctionComponent, HTMLAttributes } from 'react';
+import React, { forwardRef } from 'react';
 import styled from 'styled-components';
+
+import {
+  IAspectRatioBox,
+  AspectRatioBoxProps,
+} from '../../types/AspectRatioBox';
 
 const AspectRatio = styled.div<{ width: Number; height: Number }>`
   height: 0;
@@ -16,13 +21,12 @@ const Content = styled.div`
   height: 100%;
 `;
 
-export type AspectRatioBox = {
-  type?: string;
-} & HTMLAttributes<HTMLDivElement>;
-
-const AspectRatioBox: FunctionComponent<
-  AspectRatioBox & { forwardedRef: any }
-> = ({ type = '1:1', children, forwardedRef, ...props }) => {
+const AspectRatioBox: IAspectRatioBox = ({
+  type = '1:1',
+  children,
+  forwardedRef,
+  ...props
+}) => {
   const [width, height] = type.split(':').map(Number);
 
   return (
@@ -34,8 +38,8 @@ const AspectRatioBox: FunctionComponent<
   );
 };
 
-const Forwarded = forwardRef<AspectRatioBox, HTMLAttributes<HTMLDivElement>>(
-  (props: AspectRatioBox, ref) => (
+const Forwarded = forwardRef<AspectRatioBoxProps>(
+  (props: AspectRatioBoxProps, ref) => (
     <AspectRatioBox forwardedRef={ref} {...props} />
   )
 );
