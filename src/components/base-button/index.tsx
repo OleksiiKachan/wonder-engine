@@ -1,26 +1,9 @@
-import React, {
-  ComponentClass,
-  FunctionComponent,
-  MouseEvent,
-  forwardRef,
-} from 'react';
+import React, { MouseEvent, forwardRef } from 'react';
+import { IBaseButton, BaseButtonProps } from '../../types/BaseButton';
 
 import LinkContainer from '../link-container';
 
-interface BaseButton
-  extends FunctionComponent<{
-    component?: string | FunctionComponent | ComponentClass;
-    href?: string | object;
-    target?: string;
-    rel?: string;
-    tabIndex?: number;
-    disabled?: boolean;
-    loading?: boolean;
-    onClick: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
-    forwardRef: any;
-  }> {}
-
-const BaseButton: BaseButton = ({
+const BaseButton: IBaseButton = ({
   component,
   href,
   target,
@@ -33,7 +16,7 @@ const BaseButton: BaseButton = ({
   forwardRef,
   ...otherProps
 }) => {
-  const commonProps: object = {
+  const commonProps: BaseButtonProps = {
     disabled,
     onClick: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
       if (!loading) {
@@ -44,7 +27,7 @@ const BaseButton: BaseButton = ({
     ref: forwardRef,
   };
 
-  let props: object = {};
+  let props: BaseButtonProps = {};
 
   let linkProps = { href, target, rel };
 
@@ -67,7 +50,7 @@ const BaseButton: BaseButton = ({
   return <LinkContainer {...buttonProps}>{children}</LinkContainer>;
 };
 
-const Forwarded = forwardRef<any>((props: any, ref) => (
+const Forwarded = forwardRef<BaseButtonProps>((props: BaseButtonProps, ref) => (
   <BaseButton forwardedRef={ref} {...props} />
 ));
 Forwarded.displayName = 'BaseButton';
