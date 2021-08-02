@@ -53,7 +53,8 @@
     },
     {
       "name": "environment"
-    }
+    },
+    { "name": "dependecies" }
   ],
   "messages": {
     "type": "What changes do you make?",
