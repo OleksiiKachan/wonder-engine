@@ -1,10 +1,7 @@
 import React, { forwardRef } from 'react';
 import styled from 'styled-components';
 
-import {
-  IAspectRatioBox,
-  AspectRatioBoxProps,
-} from '../../types/AspectRatioBox';
+import { IAspectRatioBox } from '../../types/AspectRatioBox';
 
 const AspectRatio = styled.div<{ width: Number; height: Number }>`
   height: 0;
@@ -21,28 +18,20 @@ const Content = styled.div`
   height: 100%;
 `;
 
-const AspectRatioBox: IAspectRatioBox = ({
-  type = '1:1',
-  children,
-  forwardedRef,
-  ...props
-}) => {
-  const [width, height] = type.split(':').map(Number);
+const AspectRatioBox: IAspectRatioBox = forwardRef(
+  ({ type = '1:1', children, ...props }, ref) => {
+    const [width, height] = type.split(':').map(Number);
 
-  return (
-    <div ref={forwardedRef} {...props}>
-      <AspectRatio width={width} height={height}>
-        <Content>{children}</Content>
-      </AspectRatio>
-    </div>
-  );
-};
-
-const Forwarded = forwardRef<AspectRatioBoxProps>(
-  (props: AspectRatioBoxProps, ref) => (
-    <AspectRatioBox forwardedRef={ref} {...props} />
-  )
+    return (
+      <div ref={ref} {...props}>
+        <AspectRatio width={width} height={height}>
+          <Content>{children}</Content>
+        </AspectRatio>
+      </div>
+    );
+  }
 );
-Forwarded.displayName = 'AspectRatioBox';
 
-export default Forwarded;
+AspectRatioBox.displayName = 'AspectRatioBox';
+
+export default AspectRatioBox;
