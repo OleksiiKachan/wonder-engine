@@ -1,16 +1,28 @@
 import styled from 'styled-components';
 
+export const Knob = styled.div`
+  background-color: rgb(255, 255, 255);
+  border-radius: 50px;
+  height: 12px;
+  width: 12px;
+  transform-origin: left;
+  transition: transform 200ms ease-in-out 0s;
+`;
+
 export const Container = styled.label`
   position: relative;
   width: 32px;
   display: block;
+
+  &:active ${Knob} {
+    transform: scaleX(1.4);
+  }
 
   input {
     opacity: 0;
     position: absolute;
     width: 1px;
     height: 1px;
-    position: absolute;
 
     & + div {
       background-color: #d8dae5;
@@ -18,6 +30,10 @@ export const Container = styled.label`
 
     &:checked + div {
       background-color: #3366ff;
+
+      ${Knob} {
+        transform-origin: right;
+      }
     }
   }
 `;
@@ -34,16 +50,9 @@ export const Container = styled.label`
 //   justify-content: center;
 // `;
 
-export const Knob = styled.div`
-  background-color: rgb(255, 255, 255);
-  border-radius: 100px;
-  height: 12px;
-  width: 12px;
-`;
-
 export const Control = styled.div`
   cursor: pointer;
-  border-radius: 100px;
+  border-radius: 50px;
   height: 16px;
   width: 32px;
   color: white;
