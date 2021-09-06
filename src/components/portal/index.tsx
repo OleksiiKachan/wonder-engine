@@ -1,14 +1,9 @@
-import React, { useMemo, FunctionComponent } from 'react';
+import React, { useMemo } from 'react';
 import { createPortal } from 'react-dom';
 
-interface PropsType {
-  rootId?: string;
-}
+import { IPortal } from '../../types/Portal';
 
-const Portal: FunctionComponent<PropsType> = ({
-  rootId = 'root',
-  children,
-}) => {
+const Portal: IPortal = ({ rootId = 'root', children }) => {
   const root = useMemo(() => {
     if (rootId) {
       return document.getElementById(rootId);
