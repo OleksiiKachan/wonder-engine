@@ -7,7 +7,7 @@ export interface WonderEngineContext {
 const defaultContext: WonderEngineContext = {
   Link: () => {
     throw new Error(
-      `You must specify Link component inn WonderEngineProvider config`
+      `You must specify Link component in WonderEngineProvider config`
     );
   },
 };
