@@ -5,8 +5,11 @@ import React, {
   InputHTMLAttributes,
 } from 'react';
 
-export type ToggleProps = LabelHTMLAttributes<HTMLLabelElement> &
-  InputHTMLAttributes<HTMLInputElement> & {
+export type ToggleProps = Omit<
+  LabelHTMLAttributes<HTMLLabelElement>,
+  'onChange'
+> &
+  Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> & {
     onChange(checked: boolean): void;
   };
 
