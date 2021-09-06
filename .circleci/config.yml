@@ -27,12 +27,15 @@ jobs:
       - attach_workspace:
           at: ~/repo
       - run:
-          name: Run build
+          name: Build package
           command: yarn build
+      - run:
+          name: Build storybook
+          command: yarn build-storybook
       - persist_to_workspace:
           root: ~/repo
           paths: [.]
-  deploy:
+  deploy-package:
     <<: *defaults
     steps:
       - attach_workspace:
@@ -43,6 +46,14 @@ jobs:
       - run:
           name: Publish package
           command: yarn publish
+  deploy-storybook:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Publish storybook
+          command: curl -X POST -d {} https://api.netlify.com/build_hooks/613641c16ad27a16af671ae3
 
 workflows:
   publish:
@@ -51,7 +62,14 @@ workflows:
       - build:
           requires:
             - test
-      - deploy:
+      - deploy-package:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - release
+      - deploy-storybook:
           requires:
             - build
           filters:
