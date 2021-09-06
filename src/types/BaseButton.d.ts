@@ -1,15 +1,19 @@
 import React, {
-  ComponentClass,
   FunctionComponent,
-  MouseEvent,
-  forwardRef,
+  RefAttributes,
+  ButtonHTMLAttributes,
+  AnchorHTMLAttributes,
 } from 'react';
 
-export type BaseButtonProps = {
-  component?: string | FunctionComponent | ComponentClass;
+import {
+  LinkContainerProps,
+  LinkContainerRefAttributes,
+} from './LinkContainer';
+
+export interface BaseButtonProps extends LinkContainerProps {
   loading?: boolean;
   loadingCaption?: string;
-} & (ButtonHTMLAttributes | AnchorHTMLAttributes);
+}
 
 export interface IBaseButton
-  extends FunctionComponent<BaseButtonProps & { forwardedRef: any }> {}
+  extends FunctionComponent<BaseButtonProps & LinkContainerRefAttributes> {}
