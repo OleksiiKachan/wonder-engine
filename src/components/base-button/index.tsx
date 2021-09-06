@@ -1,25 +1,11 @@
-import React, {
-  ComponentClass,
-  FunctionComponent,
-  MouseEvent,
-  forwardRef,
-} from 'react';
+import React, { MouseEvent, forwardRef } from 'react';
 
-import LinkContainer from '../link-container';
+import { useWonderEngineContext } from '../../context';
 
-interface BaseButton
-  extends FunctionComponent<{
-    component?: string | FunctionComponent | ComponentClass;
-    href?: string | object;
-    target?: string;
-    rel?: string;
-    tabIndex?: number;
-    disabled?: boolean;
-    loading?: boolean;
-    onClick: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
-  }> {}
+import { IBaseButton, BaseButtonProps } from '../../types/BaseButton';
+import { Container } from './styled';
 
-const BaseButton: BaseButton = forwardRef(
+const BaseButton: IBaseButton = forwardRef(
   (
     {
       component,
@@ -29,24 +15,27 @@ const BaseButton: BaseButton = forwardRef(
       tabIndex = 0,
       disabled = false,
       loading = false,
+      loadingCaption,
       onClick = () => {},
       children,
       ...otherProps
     },
     ref
   ) => {
-    const commonProps: object = {
+    const { LoadingIndicator } = useWonderEngineContext();
+
+    const commonProps: Partial<BaseButtonProps> = {
       disabled,
-      onClick: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+      loading,
+      onClick: (event: MouseEvent<HTMLButtonElement & HTMLAnchorElement>) => {
         if (!loading) {
           onClick(event);
         }
       },
       tabIndex: !loading && !disabled ? tabIndex : -1,
-      ref,
     };
 
-    let props: object = {};
+    let props: Partial<BaseButtonProps> = {};
 
     let linkProps = { href, target, rel };
 
@@ -66,8 +55,22 @@ const BaseButton: BaseButton = forwardRef(
       component: component || 'button',
     };
 
-    return <LinkContainer {...buttonProps}>{children}</LinkContainer>;
+    return (
+      <Container {...buttonProps} ref={ref}>
+        {loading ? (
+          LoadingIndicator ? (
+            <LoadingIndicator>{loadingCaption || children}</LoadingIndicator>
+          ) : (
+            loadingCaption || children
+          )
+        ) : (
+          children
+        )}
+      </Container>
+    );
   }
 );
+
+BaseButton.displayName = 'BaseButton';
 
 export default BaseButton;
