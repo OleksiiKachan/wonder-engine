@@ -8,6 +8,7 @@ import React, {
 export type BaseButtonProps = {
   component?: string | FunctionComponent | ComponentClass;
   loading?: boolean;
+  loadingCaption?: string;
 } & (ButtonHTMLAttributes | AnchorHTMLAttributes);
 
 export interface IBaseButton

@@ -8,14 +8,19 @@ export default {
   title: 'Components/Button',
   component: Button,
   argTypes: {
-    href: { control: 'text', defaultValue: null },
+    href: { control: 'text' },
     disabled: { control: 'boolean', defaultValue: false },
     loading: { control: 'boolean', defaultValue: false },
+    loadingCaption: { control: 'text', defaultValue: 'Submitting' },
   },
 } as ComponentMeta<typeof Button>;
 
 export const Template: ComponentStory<typeof Button> = (args) => (
-  <WonderEngineProvider config={{ Link: 'a' }}>
+  <WonderEngineProvider
+    config={{
+      Link: 'a',
+    }}
+  >
     <Button {...args}>Submit</Button>
   </WonderEngineProvider>
 );

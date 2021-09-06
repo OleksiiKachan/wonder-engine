@@ -1,7 +1,8 @@
 import React, { MouseEvent, forwardRef } from 'react';
+import { useWonderEngineContext } from '../..';
 import { IBaseButton, BaseButtonProps } from '../../types/BaseButton';
 
-import LinkContainer from '../link-container';
+import { Container } from './styled';
 
 const BaseButton: IBaseButton = ({
   component,
@@ -11,13 +12,17 @@ const BaseButton: IBaseButton = ({
   tabIndex = 0,
   disabled = false,
   loading = false,
+  loadingCaption,
   onClick = () => {},
   children,
   forwardedRef,
   ...otherProps
 }) => {
+  const { LoadingIndicator } = useWonderEngineContext();
+
   const commonProps: BaseButtonProps = {
     disabled,
+    loading,
     onClick: (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
       if (!loading) {
         onClick(event);
@@ -47,7 +52,19 @@ const BaseButton: IBaseButton = ({
     component: component || 'button',
   };
 
-  return <LinkContainer {...buttonProps}>{children}</LinkContainer>;
+  return (
+    <Container {...buttonProps}>
+      {loading ? (
+        LoadingIndicator ? (
+          <LoadingIndicator>{loadingCaption || children}</LoadingIndicator>
+        ) : (
+          loadingCaption || children
+        )
+      ) : (
+        children
+      )}
+    </Container>
+  );
 };
 
 const Forwarded = forwardRef<BaseButtonProps>((props: BaseButtonProps, ref) => (
