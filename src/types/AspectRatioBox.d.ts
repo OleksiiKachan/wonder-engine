@@ -4,5 +4,9 @@ export type AspectRatioBoxProps = {
   type?: string;
 } & HTMLAttributes<HTMLDivElement>;
 
+export type AspectRatioBoxRefAttributes = RefAttributes<HTMLDivElement>;
+
 export interface IAspectRatioBox
-  extends FunctionComponent<AspectRatioBoxProps & { forwardedRef: any }> {}
+  extends FunctionComponent<
+    AspectRatioBoxProps & AspectRatioBoxRefAttributes
+  > {}
