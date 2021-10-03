@@ -47,7 +47,7 @@
     "@size-limit/preset-small-lib": "^5.0.5",
     "@storybook/addon-actions": "^6.3.9",
     "@storybook/addon-docs": "^6.3.9",
-    "@storybook/addon-essentials": "^6.3.8",
+    "@storybook/addon-essentials": "^6.3.9",
     "@storybook/addon-links": "^6.3.9",
     "@storybook/react": "^6.3.9",
     "@types/jest": "^27.0.2",
