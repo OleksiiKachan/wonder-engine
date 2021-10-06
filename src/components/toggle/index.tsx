@@ -15,7 +15,7 @@ const Toggle: IToggle = forwardRef(
     ref
   ) => {
     return (
-      <Container {...otherProps} htmlFor={name} ref={ref}>
+      <Container {...otherProps} htmlFor={name} ref={ref} isDisabled={disabled}>
         <input
           type="checkbox"
           id={name}

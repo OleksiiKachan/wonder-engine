@@ -1,0 +1,7 @@
+:root {
+  --switch-knob-bg: rgb(255, 255, 255);
+  --switch-knob-size: 12px;
+  --switch-on-bg: #3366ff;
+  --switch-off-bg: #d8dae5;
+  --switch-inner-padding: 2px;
+}
