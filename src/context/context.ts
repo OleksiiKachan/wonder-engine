@@ -3,6 +3,7 @@ import { createContext, FunctionComponent, ComponentClass } from 'react';
 export interface WonderEngineContext {
   Link?: string | FunctionComponent | ComponentClass;
   LoadingIndicator?: FunctionComponent | ComponentClass;
+  analyticsHandler?: (params: { [key: string]: any }) => void;
 }
 
 const defaultContext: Partial<WonderEngineContext> = {
@@ -11,6 +12,7 @@ const defaultContext: Partial<WonderEngineContext> = {
       `You must specify Link component in WonderEngineProvider config`
     );
   },
+  analyticsHandler: () => {},
 };
 
 const Context = createContext<WonderEngineContext>(
