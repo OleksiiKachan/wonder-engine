@@ -11,6 +11,7 @@ export type ToggleProps = Omit<
 > &
   Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> & {
     onChange(checked: boolean): void;
+    analytics: { [key: string]: any };
   };
 
 export type ToggleRefAttributes = RefAttributes<HTMLLabelElement>;

@@ -13,6 +13,7 @@ import {
 export interface BaseButtonProps extends LinkContainerProps {
   loading?: boolean;
   loadingCaption?: string;
+  analytics?: object;
 }
 
 export interface IBaseButton

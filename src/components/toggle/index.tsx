@@ -1,6 +1,8 @@
 import React, { forwardRef } from 'react';
 
-import { IToggle } from '../../types/Toggle';
+import { useWonderEngineContext } from '../../context';
+
+import { IToggle } from '../../../types/Toggle';
 import { Container, Control, Knob } from './styled';
 
 const Toggle: IToggle = forwardRef(
@@ -10,10 +12,13 @@ const Toggle: IToggle = forwardRef(
       checked = false,
       disabled = false,
       onChange = () => {},
+      analytics,
       ...otherProps
     },
     ref
   ) => {
+    const { analyticsHandler } = useWonderEngineContext();
+
     return (
       <Container {...otherProps} htmlFor={name} ref={ref} isDisabled={disabled}>
         <input
@@ -22,6 +27,8 @@ const Toggle: IToggle = forwardRef(
           checked={checked}
           disabled={disabled}
           onChange={() => {
+            typeof analyticsHandler === 'function' &&
+              analyticsHandler(analytics);
             onChange(!checked);
           }}
         />

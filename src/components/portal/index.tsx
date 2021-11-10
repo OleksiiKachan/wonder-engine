@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { createPortal } from 'react-dom';
 
-import { IPortal } from '../../types/Portal';
+import { IPortal } from '../../../types/Portal';
 
 const Portal: IPortal = ({ rootId = 'root', children }) => {
   const root = useMemo(() => {
