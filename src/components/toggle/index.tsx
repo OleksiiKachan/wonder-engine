@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react';
 
 import { useWonderEngineContext } from '../../context';
 
-import { IToggle } from '../../types/Toggle';
+import { IToggle } from '../../../types/Toggle';
 import { Container, Control, Knob } from './styled';
 
 const Toggle: IToggle = forwardRef(

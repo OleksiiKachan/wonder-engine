@@ -1,5 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import config from '../../../__stories__/defaultContext';
 
 import Button from '../index';
 import { WonderEngineProvider } from '../../../context';
@@ -17,18 +18,7 @@ export default {
 } as ComponentMeta<typeof Button>;
 
 export const Template: ComponentStory<typeof Button> = (args) => (
-  <WonderEngineProvider
-    config={{
-      Link: 'a',
-      analyticsHandler: (analytics) => {
-        if (analytics) {
-          if (analytics.gtmEvent) {
-            console.log(`Analytics - GTM Event - ${analytics.gtmEvent}`);
-          }
-        }
-      },
-    }}
-  >
+  <WonderEngineProvider config={config}>
     <Button {...args} analytics={{ gtmEvent: 'button-click' }}>
       Submit
     </Button>

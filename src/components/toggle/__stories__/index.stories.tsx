@@ -1,5 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import config from '../../../__stories__/defaultContext';
 
 import Toggle from '../';
 import { WonderEngineProvider } from '../../../context';
@@ -14,17 +15,7 @@ export default {
 } as ComponentMeta<typeof Toggle>;
 
 export const Template: ComponentStory<typeof Toggle> = (args) => (
-  <WonderEngineProvider
-    config={{
-      analyticsHandler: (analytics) => {
-        if (analytics) {
-          if (analytics.gtmEvent) {
-            console.log(`Analytics - GTM Event - ${analytics.gtmEvent}`);
-          }
-        }
-      },
-    }}
-  >
+  <WonderEngineProvider config={config}>
     <Toggle
       {...args}
       name="toggle-story"

@@ -1,10 +1,6 @@
-import { createContext, FunctionComponent, ComponentClass } from 'react';
+import { createContext } from 'react';
 
-export interface WonderEngineContext {
-  Link?: string | FunctionComponent | ComponentClass;
-  LoadingIndicator?: FunctionComponent | ComponentClass;
-  analyticsHandler?: (params: { [key: string]: any }) => void;
-}
+import { WonderEngineContext } from '../../types/context';
 
 const defaultContext: Partial<WonderEngineContext> = {
   Link: () => {

@@ -1,8 +1,10 @@
 import { useContext } from 'react';
-import Context, { WonderEngineContext } from './context';
+import Context from './context';
+
+import { WonderEngineContext } from '../../types/context';
 
 const useWonderEngineContext = (): WonderEngineContext => {
-  const context = useContext(Context);
+  const context = useContext<WonderEngineContext>(Context);
 
   return context;
 };
