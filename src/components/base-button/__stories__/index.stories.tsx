@@ -29,7 +29,7 @@ export const Template: ComponentStory<typeof Button> = (args) => (
       },
     }}
   >
-    <Button {...args} analytics={{ gtmEvent: 'testingthis' }}>
+    <Button {...args} analytics={{ gtmEvent: 'button-click' }}>
       Submit
     </Button>
   </WonderEngineProvider>
