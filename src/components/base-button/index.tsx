@@ -2,7 +2,7 @@ import React, { MouseEvent, forwardRef } from 'react';
 
 import { useWonderEngineContext } from '../../context';
 
-import { IBaseButton, BaseButtonProps } from '../../types/BaseButton';
+import { IBaseButton, BaseButtonProps } from '../../../types/BaseButton';
 import { Container } from './styled';
 
 const BaseButton: IBaseButton = forwardRef(
@@ -17,18 +17,20 @@ const BaseButton: IBaseButton = forwardRef(
       loading = false,
       loadingCaption,
       onClick = () => {},
+      analytics = {},
       children,
       ...otherProps
     },
     ref
   ) => {
-    const { LoadingIndicator } = useWonderEngineContext();
+    const { LoadingIndicator, analyticsHandler } = useWonderEngineContext();
 
-    const commonProps: Partial<BaseButtonProps> = {
+    const commonProps: Partial<BaseButtonProps> & { $loading: boolean } = {
       disabled,
-      loading,
+      $loading: loading,
       onClick: (event: MouseEvent<HTMLButtonElement & HTMLAnchorElement>) => {
         if (!loading) {
+          typeof analyticsHandler === 'function' && analyticsHandler(analytics);
           onClick(event);
         }
       },

@@ -6,7 +6,7 @@ import {
 } from 'react';
 
 import { useWonderEngineContext } from '../../context';
-import { ILinkContainer } from '../../types/LinkContainer';
+import { ILinkContainer } from '../../../types/LinkContainer';
 
 const LinkContainer: ILinkContainer = forwardRef(
   ({ component = 'div', href, target, rel, children, ...otherProps }, ref) => {

@@ -1,9 +1,6 @@
-import { createContext, FunctionComponent, ComponentClass } from 'react';
+import { createContext } from 'react';
 
-export interface WonderEngineContext {
-  Link?: string | FunctionComponent | ComponentClass;
-  LoadingIndicator?: FunctionComponent | ComponentClass;
-}
+import { WonderEngineContext } from '../../types/context';
 
 const defaultContext: Partial<WonderEngineContext> = {
   Link: () => {
@@ -11,6 +8,7 @@ const defaultContext: Partial<WonderEngineContext> = {
       `You must specify Link component in WonderEngineProvider config`
     );
   },
+  analyticsHandler: () => {},
 };
 
 const Context = createContext<WonderEngineContext>(
