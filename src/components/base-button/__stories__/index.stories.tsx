@@ -12,6 +12,7 @@ export default {
     disabled: { control: 'boolean', defaultValue: false },
     loading: { control: 'boolean', defaultValue: false },
     loadingCaption: { control: 'text', defaultValue: 'Submitting' },
+    onClick: { action: 'clicked' },
   },
 } as ComponentMeta<typeof Button>;
 
@@ -19,8 +20,17 @@ export const Template: ComponentStory<typeof Button> = (args) => (
   <WonderEngineProvider
     config={{
       Link: 'a',
+      analyticsHandler: (analytics) => {
+        if (analytics) {
+          if (analytics.gtmEvent) {
+            console.log(`Analytics - GTM Event - ${analytics.gtmEvent}`);
+          }
+        }
+      },
     }}
   >
-    <Button {...args}>Submit</Button>
+    <Button {...args} analytics={{ gtmEvent: 'testingthis' }}>
+      Submit
+    </Button>
   </WonderEngineProvider>
 );
