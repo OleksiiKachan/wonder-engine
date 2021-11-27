@@ -1,4 +1,4 @@
-import React, { MouseEvent, forwardRef } from 'react';
+import { MouseEvent, forwardRef } from 'react';
 
 import { useWonderEngineContext } from '../../context';
 
