@@ -1,6 +1,5 @@
 import {
   FunctionComponent,
-  RefAttributes,
   ButtonHTMLAttributes,
   AnchorHTMLAttributes,
 } from 'react';
