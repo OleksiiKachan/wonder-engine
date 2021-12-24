@@ -6,7 +6,8 @@ import {
 } from 'react';
 
 import { useWonderEngineContext } from '../../context';
-import { ILinkContainer } from '../../../types/LinkContainer';
+
+import type { ILinkContainer } from './types';
 
 const LinkContainer: ILinkContainer = forwardRef(
   ({ component = 'div', href, target, rel, children, ...otherProps }, ref) => {
@@ -40,3 +41,5 @@ const LinkContainer: ILinkContainer = forwardRef(
 );
 
 export default LinkContainer;
+
+export * from './types';

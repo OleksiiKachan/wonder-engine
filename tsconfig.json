@@ -1,5 +1,5 @@
 {
-  "include": ["src", "types"],
+  "include": ["src"],
   "exclude": ["**/__tests__/**", "**/__stories__/**"],
   "compilerOptions": {
     "module": "esnext",
@@ -15,9 +15,10 @@
     "jsx": "react-jsx",
     "esModuleInterop": true,
     "allowJs": false,
-    "typeRoots": ["node_modules/@types", "types"],
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "dist"
+    "outDir": "dist/types",
+    "declaration": true,
+    "emitDeclarationOnly": true
   }
 }

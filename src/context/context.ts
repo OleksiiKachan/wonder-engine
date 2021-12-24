@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
-import { WonderEngineContext } from '../../types/context';
+import type { WonderEngineContext } from './types';
 
 const defaultContext: Partial<WonderEngineContext> = {
   Link: () => {

@@ -1,13 +1,9 @@
-import {
-  FunctionComponent,
-  ButtonHTMLAttributes,
-  AnchorHTMLAttributes,
-} from 'react';
+import type { FunctionComponent } from 'react';
 
-import {
+import type {
   LinkContainerProps,
   LinkContainerRefAttributes,
-} from './LinkContainer';
+} from '../link-container';
 
 export interface BaseButtonProps extends LinkContainerProps {
   loading?: boolean;

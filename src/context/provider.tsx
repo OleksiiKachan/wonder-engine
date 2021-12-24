@@ -1,7 +1,7 @@
-import { FunctionComponent } from 'react';
 import Context from './context';
 
-import { WonderEngineContext } from '../../types/context';
+import type { FunctionComponent } from 'react';
+import type { WonderEngineContext } from './types';
 
 const Provider: FunctionComponent<{ config: WonderEngineContext }> = ({
   children,

@@ -1,4 +1,4 @@
-import { FunctionComponent, HTMLAttributes, RefAttributes } from 'react';
+import type { FunctionComponent, HTMLAttributes, RefAttributes } from 'react';
 
 export type AspectRatioBoxProps = {
   type?: string;

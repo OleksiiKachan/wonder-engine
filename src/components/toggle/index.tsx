@@ -2,8 +2,9 @@ import { forwardRef } from 'react';
 
 import { useWonderEngineContext } from '../../context';
 
-import { IToggle } from '../../../types/Toggle';
 import { Container, Control, Knob } from './styled';
+
+import type { IToggle } from './types';
 
 const Toggle: IToggle = forwardRef(
   (
@@ -47,3 +48,4 @@ const Toggle: IToggle = forwardRef(
 Toggle.displayName = 'Toggle';
 
 export default Toggle;
+export * from './types';

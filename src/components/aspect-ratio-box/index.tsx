@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 import styled from 'styled-components';
 
-import { IAspectRatioBox } from '../../../types/AspectRatioBox';
+import type { IAspectRatioBox } from './types';
 
 const AspectRatio = styled.div<{ width: Number; height: Number }>`
   height: 0;
@@ -35,3 +35,4 @@ const AspectRatioBox: IAspectRatioBox = forwardRef(
 AspectRatioBox.displayName = 'AspectRatioBox';
 
 export default AspectRatioBox;
+export * from './types';

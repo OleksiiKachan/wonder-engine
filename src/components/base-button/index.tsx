@@ -1,9 +1,11 @@
-import { MouseEvent, forwardRef } from 'react';
+import { forwardRef } from 'react';
 
 import { useWonderEngineContext } from '../../context';
 
-import { IBaseButton, BaseButtonProps } from '../../../types/BaseButton';
 import { Container } from './styled';
+
+import type { MouseEvent } from 'react';
+import type { IBaseButton, BaseButtonProps } from './types';
 
 const BaseButton: IBaseButton = forwardRef(
   (
