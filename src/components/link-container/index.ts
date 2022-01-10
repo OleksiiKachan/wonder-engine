@@ -1,15 +1,33 @@
-import {
-  ComponentClass,
-  createElement,
-  FunctionComponent,
-  forwardRef,
-} from 'react';
+import { createElement, forwardRef } from 'react';
 
 import { useWonderEngineContext } from '../../context';
 
-import type { ILinkContainer } from './types';
+/**
+ * Types imports
+ */ import type {
+  ComponentClass,
+  FunctionComponent,
+  RefAttributes,
+  ButtonHTMLAttributes,
+  AnchorHTMLAttributes,
+} from 'react';
 
-const LinkContainer: ILinkContainer = forwardRef(
+/**
+ * Types
+ */
+export type LinkContainerProps = ButtonHTMLAttributes<HTMLButtonElement> &
+  AnchorHTMLAttributes<HTMLAnchorElement> & {
+    component: string | FunctionComponent | ComponentClass;
+  };
+
+export type LinkContainerRefAttributes = RefAttributes<
+  HTMLButtonElement & HTMLAnchorElement
+>;
+
+export interface LinkContainer
+  extends FunctionComponent<LinkContainerProps & LinkContainerRefAttributes> {}
+
+const LinkContainer: LinkContainer = forwardRef(
   ({ component = 'div', href, target, rel, children, ...otherProps }, ref) => {
     const { Link } = useWonderEngineContext();
 
@@ -41,5 +59,3 @@ const LinkContainer: ILinkContainer = forwardRef(
 );
 
 export default LinkContainer;
-
-export * from './types';

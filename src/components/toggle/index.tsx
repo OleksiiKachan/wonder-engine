@@ -4,9 +4,31 @@ import { useWonderEngineContext } from '../../context';
 
 import { Container, Control, Knob } from './styled';
 
-import type { IToggle } from './types';
+/**
+ * Types imports
+ */ import type {
+  FunctionComponent,
+  RefAttributes,
+  LabelHTMLAttributes,
+  InputHTMLAttributes,
+} from 'react';
 
-const Toggle: IToggle = forwardRef(
+/**
+ * Types
+ */
+export type ToggleProps = Omit<
+  LabelHTMLAttributes<HTMLLabelElement>,
+  'onChange'
+> &
+  Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> & {
+    onChange(checked: boolean): void;
+    analytics: { [key: string]: any };
+  };
+
+export interface Toggle
+  extends FunctionComponent<ToggleProps & RefAttributes<HTMLLabelElement>> {}
+
+const Toggle: Toggle = forwardRef(
   (
     {
       name,
@@ -48,4 +70,3 @@ const Toggle: IToggle = forwardRef(
 Toggle.displayName = 'Toggle';
 
 export default Toggle;
-export * from './types';

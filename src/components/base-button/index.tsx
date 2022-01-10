@@ -4,10 +4,28 @@ import { useWonderEngineContext } from '../../context';
 
 import { Container } from './styled';
 
-import type { MouseEvent } from 'react';
-import type { IBaseButton, BaseButtonProps } from './types';
+/**
+ * Types importss
+ */
+import type { MouseEvent, FunctionComponent } from 'react';
+import type {
+  LinkContainerProps,
+  LinkContainerRefAttributes,
+} from '../link-container';
 
-const BaseButton: IBaseButton = forwardRef(
+/**
+ * Types
+ */
+export interface BaseButtonProps extends LinkContainerProps {
+  loading?: boolean;
+  loadingCaption?: string;
+  analytics?: object;
+}
+
+export interface BaseButton
+  extends FunctionComponent<BaseButtonProps & LinkContainerRefAttributes> {}
+
+const BaseButton: BaseButton = forwardRef(
   (
     {
       component,
