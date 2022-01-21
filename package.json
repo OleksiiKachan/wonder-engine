@@ -50,7 +50,7 @@
     "babel-loader": "^8.2.3",
     "babel-plugin-module-resolver": "^4.1.0",
     "babel-plugin-styled-components": "^2.0.2",
-    "commitlint": "^16.0.2",
+    "commitlint": "^16.1.0",
     "cz-customizable": "^6.3.0",
     "enzyme": "^3.11.0",
     "enzyme-to-json": "^3.6.2",
