@@ -28,7 +28,7 @@ jobs:
           at: ~/repo
       - run:
           name: Build package
-          command: yarn release
+          command: yarn build
       - run:
           name: Build storybook
           command: yarn build-storybook

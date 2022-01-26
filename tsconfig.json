@@ -1,23 +1,25 @@
 {
-  "include": ["src", "types"],
+  "include": ["src"],
   "exclude": ["**/__tests__/**", "**/__stories__/**"],
   "compilerOptions": {
-    "module": "esnext",
     "target": "esnext",
     "lib": ["dom", "esnext"],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": false,
     "strictNullChecks": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "moduleResolution": "node",
+    "declaration": true,
     "jsx": "react-jsx",
-    "esModuleInterop": true,
-    "allowJs": false,
-    "typeRoots": ["node_modules/@types", "types"],
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "outDir": "dist"
+    "outDir": "dist/types"
   }
 }
