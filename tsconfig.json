@@ -20,6 +20,6 @@
     "noImplicitReturns": true,
     "declaration": true,
     "jsx": "react-jsx",
-    "outDir": "dist"
+    "outDir": "dist/types"
   }
 }
