@@ -58,6 +58,7 @@
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
     "@types/styled-components": "^5.1.19",
+    "@vitejs/plugin-react": "^1.1.4",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6",
     "babel-jest": "^27.4.6",
     "babel-loader": "^8.2.3",
