@@ -29,6 +29,7 @@
     "build:js": "vite build",
     "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist/types",
     "build:storybook": "build-storybook",
+    "typescript:check": "tsc --project ./tsconfig.json --noEmit",
     "lint": "eslint",
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006",
