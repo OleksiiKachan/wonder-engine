@@ -2,10 +2,33 @@ import { forwardRef } from 'react';
 
 import { useWonderEngineContext } from '../../context';
 
-import { IToggle } from '../../../types/Toggle';
 import { Container, Control, Knob } from './styled';
 
-const Toggle: IToggle = forwardRef(
+/**
+ * Types imports
+ */ import type {
+  FunctionComponent,
+  RefAttributes,
+  LabelHTMLAttributes,
+  InputHTMLAttributes,
+} from 'react';
+
+/**
+ * Types
+ */
+export type ToggleProps = Omit<
+  LabelHTMLAttributes<HTMLLabelElement>,
+  'onChange'
+> &
+  Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> & {
+    onChange(checked: boolean): void;
+    analytics: { [key: string]: any };
+  };
+
+export interface Toggle
+  extends FunctionComponent<ToggleProps & RefAttributes<HTMLLabelElement>> {}
+
+const Toggle: Toggle = forwardRef(
   (
     {
       name,

@@ -1,7 +1,10 @@
 import { forwardRef } from 'react';
 import styled from 'styled-components';
 
-import { IAspectRatioBox } from '../../../types/AspectRatioBox';
+/**
+ * Types imports
+ */
+import type { FunctionComponent, HTMLAttributes, RefAttributes } from 'react';
 
 const AspectRatio = styled.div<{ width: Number; height: Number }>`
   height: 0;
@@ -18,7 +21,18 @@ const Content = styled.div`
   height: 100%;
 `;
 
-const AspectRatioBox: IAspectRatioBox = forwardRef(
+/**
+ * Types
+ */
+export interface AspectRatioBoxProps extends HTMLAttributes<HTMLDivElement> {
+  type?: string;
+}
+export interface AspectRatioBox
+  extends FunctionComponent<
+    AspectRatioBoxProps & RefAttributes<HTMLDivElement>
+  > {}
+
+const AspectRatioBox: AspectRatioBox = forwardRef(
   ({ type = '1:1', children, ...props }, ref) => {
     const [width, height] = type.split(':').map(Number);
 

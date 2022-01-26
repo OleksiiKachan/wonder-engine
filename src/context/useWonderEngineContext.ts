@@ -1,9 +1,19 @@
 import { useContext } from 'react';
 import Context from './context';
 
-import { WonderEngineContext } from '../../types/context';
+/**
+ * Types importss
+ */
+import type { WonderEngineContext } from './context';
 
-const useWonderEngineContext = (): WonderEngineContext => {
+/**
+ * Types
+ */
+export interface useWonderEngineContext {
+  (): WonderEngineContext;
+}
+
+const useWonderEngineContext: useWonderEngineContext = () => {
   const context = useContext<WonderEngineContext>(Context);
 
   return context;

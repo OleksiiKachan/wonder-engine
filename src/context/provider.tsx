@@ -1,13 +1,22 @@
-import { FunctionComponent } from 'react';
 import Context from './context';
 
-import { WonderEngineContext } from '../../types/context';
+/**
+ * Types imports
+ */
+import type { FunctionComponent } from 'react';
+import type { WonderEngineContext } from './context';
 
-const Provider: FunctionComponent<{ config: WonderEngineContext }> = ({
+/**
+ * Types
+ */
+export interface WonderEngineContextProvider
+  extends FunctionComponent<{ config: WonderEngineContext }> {}
+
+const WonderEngineContextProvider: WonderEngineContextProvider = ({
   children,
   config,
 }) => {
   return <Context.Provider value={{ ...config }}>{children}</Context.Provider>;
 };
 
-export default Provider;
+export default WonderEngineContextProvider;
