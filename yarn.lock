@@ -4639,7 +4639,7 @@ commander@^6.2.1:
   resolved "https://registry.yarnpkg.com/commander/-/commander-6.2.1.tgz#0792eb682dfbc325999bb2b84fddddba110ac73c"
   integrity sha512-U7VdrJFnJgo4xjrHpTzu0yrHPGImdsmD95ZlgYSEajAn2JKzDhDTPG9kBTefmObL2w/ngeZnilk+OV9CG3d7UA==
 
-commitlint@^16.0.2:
+commitlint@^16.1.0:
   version "16.1.0"
   resolved "https://registry.yarnpkg.com/commitlint/-/commitlint-16.1.0.tgz#4a5361574f41de107e380095972da472540cb94d"
   integrity sha512-Rqm1dcsVf6Wkn0yBMHMFGcMdqHfaGra4pu314INydD9vMLRkgvLL9BRCUz+2NXN5JmOtKq3bA6+VYi2vKdc9MQ==
