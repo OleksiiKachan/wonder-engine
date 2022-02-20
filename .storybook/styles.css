@@ -4,4 +4,9 @@
   --switch-on-bg: #3366ff;
   --switch-off-bg: #d8dae5;
   --switch-inner-padding: 2px;
+
+  --pagination-item-width: 20px;
+  --pagination-item-height: 20px;
+  --pagination-item-padding: 10px;
+  --pagination-item-arrow-image: url('https://storage.googleapis.com/nobul-public-assets/icons/black/arrow-left.svg');
 }
