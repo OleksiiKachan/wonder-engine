@@ -1,4 +1,4 @@
-import { createElement, forwardRef } from 'react';
+import { createElement, forwardRef, useMemo } from 'react';
 
 import { useWonderEngineContext } from '../../context';
 
@@ -15,40 +15,99 @@ import { useWonderEngineContext } from '../../context';
 /**
  * Types
  */
+type Component = string | FunctionComponent | ComponentClass;
+type Href = string | { [key: string]: any };
+type Object = { [key: string]: any };
+
 export type LinkContainerProps = ButtonHTMLAttributes<HTMLButtonElement> &
-  AnchorHTMLAttributes<HTMLAnchorElement> & {
-    component: string | FunctionComponent | ComponentClass;
+  Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> & {
+    component: Component;
+    href?: Href;
+    dataAttrs?: Object;
+    ariaAttrs?: Object;
   };
 
 export type LinkContainerRefAttributes = RefAttributes<
-  HTMLButtonElement & HTMLAnchorElement
+  HTMLButtonElement & Omit<HTMLAnchorElement, 'href'>
 >;
-
 export interface LinkContainer
   extends FunctionComponent<LinkContainerProps & LinkContainerRefAttributes> {}
 
+const generateDashAttrs = (
+  prefix: string,
+  attrs?: { [key: string]: any }
+): { [key: string]: any } =>
+  prefix && attrs
+    ? Object.keys(attrs).reduce(
+        (acc, key) => ({ ...acc, [`${prefix}-${key}`]: attrs[key] }),
+        {}
+      )
+    : {};
+
+const generateProps = ({
+  href,
+  dataAttrs,
+  ariaAttrs,
+  ...otherProps
+}: Partial<LinkContainerProps>) => {
+  let props = {
+    ...generateDashAttrs(`data`, dataAttrs),
+    ...generateDashAttrs(`aria`, ariaAttrs),
+  };
+
+  if (href) {
+    props = { ...props, href, ...otherProps };
+  }
+
+  return props;
+};
+
+const getComponent = ({
+  linkComponent,
+  component,
+  href,
+}: {
+  linkComponent?: Component;
+  component: Component;
+  href?: Href;
+}): Component => {
+  if (href) {
+    const isExternalLink =
+      typeof href === `string` &&
+      [`http`, `mailto:`, `tel:`].some((sub) => href.includes(sub));
+
+    return isExternalLink ? `a` : linkComponent || 'a';
+  }
+
+  return component;
+};
+
 const LinkContainer: LinkContainer = forwardRef(
-  ({ component = 'div', href, target, rel, children, ...otherProps }, ref) => {
+  (
+    {
+      component = 'div',
+      href,
+      target,
+      rel,
+      children,
+      dataAttrs,
+      ariaAttrs,
+      ...otherProps
+    },
+    ref
+  ) => {
     const { Link } = useWonderEngineContext();
 
-    let Component: string | FunctionComponent | ComponentClass = component;
+    const Component = getComponent({ linkComponent: Link, component, href });
 
     const commonProps: object = {
       ref,
     };
 
-    let props: object = {};
-
-    let linkProps = { href, target, rel };
-
-    if (href) {
-      const isExternalLink =
-        typeof href === `string` &&
-        [`http`, `mailto:`, `tel:`].some((sub) => href.includes(sub));
-
-      Component = isExternalLink ? `a` : Link || 'a';
-      props = { ...linkProps };
-    }
+    const props = useMemo(
+      () => generateProps({ dataAttrs, ariaAttrs, href, target, rel }),
+      [dataAttrs, ariaAttrs, href, target, rel]
+    );
 
     return createElement(
       Component,
