@@ -1,4 +1,4 @@
-import { createElement, forwardRef } from 'react';
+import { createElement, forwardRef, useMemo } from 'react';
 
 import { useWonderEngineContext } from '../../context';
 
@@ -30,6 +30,17 @@ export type LinkContainerRefAttributes = RefAttributes<
 export interface LinkContainer
   extends FunctionComponent<LinkContainerProps & LinkContainerRefAttributes> {}
 
+const generateDashAttrs = (
+  prefix: string,
+  attrs?: { [key: string]: any }
+): { [key: string]: any } =>
+  prefix && attrs
+    ? Object.keys(attrs).reduce(
+        (acc, key) => ({ ...acc, [`${prefix}-${key}`]: attrs[key] }),
+        {}
+      )
+    : {};
+
 const LinkContainer: LinkContainer = forwardRef(
   (
     {
@@ -52,27 +63,7 @@ const LinkContainer: LinkContainer = forwardRef(
       ref,
     };
 
-    let props: object = {};
-
-    let linkProps = { href, target, rel };
-
-    if (dataAttrs) {
-      const parsedDataAttrs = Object.keys(dataAttrs).reduce(
-        (acc, key) => ({ ...acc, [`data-${key}`]: dataAttrs[key] }),
-        {}
-      );
-
-      props = { ...props, ...parsedDataAttrs };
-    }
-
-    if (ariaAttrs) {
-      const parsedAriaAttrs = Object.keys(ariaAttrs).reduce(
-        (acc, key) => ({ ...acc, [`aria-${key}`]: ariaAttrs[key] }),
-        {}
-      );
-
-      props = { ...props, ...parsedAriaAttrs };
-    }
+    let linkProps = {};
 
     if (href) {
       const isExternalLink =
@@ -80,12 +71,19 @@ const LinkContainer: LinkContainer = forwardRef(
         [`http`, `mailto:`, `tel:`].some((sub) => href.includes(sub));
 
       Component = isExternalLink ? `a` : Link || 'a';
-      props = { ...props, ...linkProps };
+      linkProps = { href, target, rel };
     }
+
+    const dashedProps = useMemo(() => {
+      return {
+        ...generateDashAttrs(`data`, dataAttrs),
+        ...generateDashAttrs(`aria`, ariaAttrs),
+      };
+    }, [dataAttrs, ariaAttrs]);
 
     return createElement(
       Component,
-      { ...commonProps, ...props, ...otherProps },
+      { ...commonProps, ...dashedProps, ...linkProps, ...otherProps },
       children
     );
   }
