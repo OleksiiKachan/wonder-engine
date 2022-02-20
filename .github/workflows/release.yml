@@ -1,0 +1,27 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - release
+
+jobs:
+  release:
+    name: Release new version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+      - name: install
+        run: yarn install --immutable
+      - name: build package
+        run: yarn build
+      - name: deploy package
+        run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: deploy storybook
+        run: curl -X POST -d {} https://api.netlify.com/build_hooks/${{secrets.NETLIFY_HOOK}}

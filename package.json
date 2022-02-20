@@ -29,11 +29,10 @@
     "build:js": "vite build",
     "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist/types",
     "build:storybook": "build-storybook",
-    "typescript:check": "tsc --project ./tsconfig.json --noEmit",
     "lint": "eslint",
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006",
-    "test": "NODE_ENV=test jest"
+    "test": "cross-env NODE_ENV=test jest"
   },
   "config": {
     "commitizen": {
@@ -63,6 +62,7 @@
     "babel-jest": "^27.5.1",
     "babel-loader": "^8.2.3",
     "commitlint": "^16.2.1",
+    "cross-env": "^7.0.3",
     "cz-customizable": "^6.3.0",
     "enzyme": "^3.11.0",
     "enzyme-to-json": "^3.6.2",
