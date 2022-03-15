@@ -48,7 +48,7 @@ const generateProps = ({
   href,
   dataAttrs,
   ariaAttrs,
-  ...otherProps
+  ...linkProps
 }: Partial<LinkContainerProps>) => {
   let props = {
     ...generateDashAttrs(`data`, dataAttrs),
@@ -56,10 +56,35 @@ const generateProps = ({
   };
 
   if (href) {
-    props = { ...props, href, ...otherProps };
+    props = { ...props, ...linkProps };
+
+    const { hrefLink, isExternalLink } = checkIsExternalLink(href);
+
+    if (isExternalLink) {
+      props.href = hrefLink;
+    } else {
+      props.href = href;
+    }
   }
 
   return props;
+};
+
+const checkIsExternalLink = (
+  href: Href
+): { hrefLink: string; isExternalLink: boolean } => {
+  const hrefLink =
+    typeof href === `object`
+      ? href.pathname
+      : typeof href === `string`
+      ? href
+      : ``;
+
+  const isExternalLink = [`http`, `mailto:`, `tel:`].some((sub) =>
+    hrefLink.includes(sub)
+  );
+
+  return { hrefLink, isExternalLink };
 };
 
 const getComponent = ({
@@ -72,9 +97,7 @@ const getComponent = ({
   href?: Href;
 }): Component => {
   if (href) {
-    const isExternalLink =
-      typeof href === `string` &&
-      [`http`, `mailto:`, `tel:`].some((sub) => href.includes(sub));
+    const { isExternalLink } = checkIsExternalLink(href);
 
     return isExternalLink ? `a` : linkComponent || 'a';
   }
