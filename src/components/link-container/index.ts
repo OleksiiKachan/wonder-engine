@@ -74,11 +74,9 @@ const checkIsExternalLink = (
   href: Href
 ): { hrefLink: string; isExternalLink: boolean } => {
   const hrefLink =
-    typeof href === `object`
+    (typeof href === `object`
       ? href.pathname
-      : typeof href === `string`
-      ? href
-      : ``;
+      : typeof href === `string` && href) || ``;
 
   const isExternalLink = [`http`, `mailto:`, `tel:`].some((sub) =>
     hrefLink.includes(sub)
