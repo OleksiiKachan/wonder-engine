@@ -1,10 +1,9 @@
-import * as ReactDOM from 'react-dom';
+import { render } from '@testing-library/react';
 import AspectRatioBox from '../index';
 
 describe('AspectRatioBox', () => {
   it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<AspectRatioBox />, div);
-    ReactDOM.unmountComponentAtNode(div);
+    const { container, unmount } = render(<AspectRatioBox />);
+    unmount();
   });
 });

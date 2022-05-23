@@ -3,14 +3,17 @@ import Context from './context';
 /**
  * Types imports
  */
-import type { FunctionComponent } from 'react';
+import type { FunctionComponent, ReactNode } from 'react';
 import type { WonderEngineContext } from './context';
 
 /**
  * Types
  */
 export interface WonderEngineContextProvider
-  extends FunctionComponent<{ config: WonderEngineContext }> {}
+  extends FunctionComponent<{
+    config: WonderEngineContext;
+    children: ReactNode;
+  }> {}
 
 const WonderEngineContextProvider: WonderEngineContextProvider = ({
   children,
