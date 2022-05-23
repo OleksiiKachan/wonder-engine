@@ -3,14 +3,14 @@ import { createContext } from 'react';
 /**
  * Types imports
  */
-import type { FunctionComponent, ComponentClass } from 'react';
+import type { FunctionComponent, PropsWithChildren } from 'react';
 
 /**
  * Types
  */
 export interface WonderEngineContext {
-  Link?: string | FunctionComponent | ComponentClass;
-  LoadingIndicator?: FunctionComponent | ComponentClass;
+  Link?: string | FunctionComponent<PropsWithChildren<any>>;
+  LoadingIndicator?: FunctionComponent<PropsWithChildren<any>>;
   analyticsHandler?: (params: { [key: string]: any }) => void;
 }
 
