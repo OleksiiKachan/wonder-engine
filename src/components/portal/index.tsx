@@ -3,18 +3,20 @@ import { createPortal } from 'react-dom';
 
 /**
  * Types imports
- */ import type { FunctionComponent } from 'react';
+ */ import type { FunctionComponent, ReactNode } from 'react';
 
 /**
- * Typess
+ * Types
  */
 export interface PortalProps {
   rootId?: string;
+  children: ReactNode;
 }
 
-export interface Portal extends FunctionComponent<PortalProps> {}
-
-const Portal: Portal = ({ rootId = 'root', children }) => {
+const Portal: FunctionComponent<PortalProps> = ({
+  rootId = 'root',
+  children,
+}) => {
   const root = useMemo(() => {
     if (rootId) {
       return document.getElementById(rootId);

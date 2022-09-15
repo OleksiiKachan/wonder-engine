@@ -42,7 +42,7 @@ const Pagination: Pagination = ({
   const nextDisabled = !hasNext || !pagesCount;
 
   const generateLink = useCallback(
-    (page) => {
+    (page: number) => {
       if (typeof hrefFormatter === `function`) {
         return hrefFormatter(page);
       }
@@ -53,7 +53,7 @@ const Pagination: Pagination = ({
   );
 
   const onChange = useCallback(
-    (page) => () => {
+    (page: number) => () => {
       if (typeof onPageChange === `function`) {
         onPageChange(page);
       }
