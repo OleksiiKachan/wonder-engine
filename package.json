@@ -65,7 +65,7 @@
     "commitlint": "^17.1.2",
     "cross-env": "^7.0.3",
     "cz-customizable": "^7.0.0",
-    "eslint": "^8.24.0",
+    "eslint": "^8.25.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.1",
