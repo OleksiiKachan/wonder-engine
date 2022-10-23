@@ -45,11 +45,12 @@ const generateDashAttrs = (
     : {};
 
 export const generateProps = ({
-  href,
-  dataAttrs,
-  ariaAttrs,
-  ...linkProps
-}: Partial<LinkContainerProps>) => {
+  props: { href, dataAttrs, ariaAttrs, ...linkProps },
+  platform,
+}: {
+  props: Partial<LinkContainerProps>;
+  platform: string;
+}) => {
   let props = {
     ...generateDashAttrs(`data`, dataAttrs),
     ...generateDashAttrs(`aria`, ariaAttrs),
@@ -64,6 +65,10 @@ export const generateProps = ({
       props.href = hrefLink;
     } else {
       props.href = href;
+
+      if (platform === `nextjs`) {
+        props.legacyBehavior = false;
+      }
     }
   }
 
@@ -117,7 +122,7 @@ const LinkContainer: LinkContainer = forwardRef(
     },
     ref
   ) => {
-    const { Link } = useWonderEngineContext();
+    const { Link, platform } = useWonderEngineContext();
 
     const Component = getComponent({ linkComponent: Link, component, href });
 
@@ -126,8 +131,12 @@ const LinkContainer: LinkContainer = forwardRef(
     };
 
     const props = useMemo(
-      () => generateProps({ dataAttrs, ariaAttrs, href, target, rel }),
-      [dataAttrs, ariaAttrs, href, target, rel]
+      () =>
+        generateProps({
+          props: { dataAttrs, ariaAttrs, href, target, rel },
+          platform,
+        }),
+      [dataAttrs, ariaAttrs, href, target, rel, platform]
     );
 
     return createElement(

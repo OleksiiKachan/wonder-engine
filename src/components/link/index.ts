@@ -20,13 +20,16 @@ export interface Link
   > {}
 
 const Link: Link = forwardRef(({ children, ...otherProps }, ref) => {
-  const { Link: LinkComponent } = useWonderEngineContext();
+  const { Link: LinkComponent, platform } = useWonderEngineContext();
 
   const commonProps: object = {
     ref,
   };
 
-  const props = useMemo(() => generateProps(otherProps), [otherProps]);
+  const props = useMemo(
+    () => generateProps({ props: otherProps, platform }),
+    [otherProps, platform]
+  );
 
   return createElement(
     LinkComponent,
