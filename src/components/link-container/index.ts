@@ -44,7 +44,7 @@ const generateDashAttrs = (
       )
     : {};
 
-const generateProps = ({
+export const generateProps = ({
   href,
   dataAttrs,
   ariaAttrs,
