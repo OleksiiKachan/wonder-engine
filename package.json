@@ -1,5 +1,6 @@
 {
   "name": "wonder-engine",
+  "version": "0.0.34",
   "version": "0.0.35",
   "private": false,
   "description": "Engine for ui kits and design systems",
