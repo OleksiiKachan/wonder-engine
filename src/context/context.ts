@@ -10,6 +10,7 @@ import type { FunctionComponent, PropsWithChildren } from 'react';
  */
 export interface WonderEngineContext {
   Link: string | FunctionComponent<PropsWithChildren<any>>;
+  platform: string;
   LoadingIndicator?: FunctionComponent<PropsWithChildren<any>>;
   analyticsHandler?: (params: { [key: string]: any }) => void;
 }
