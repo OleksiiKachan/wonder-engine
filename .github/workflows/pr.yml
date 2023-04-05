@@ -1,4 +1,4 @@
-name: Unit tests
+name: PR Checks
 
 on:
   pull_request:
@@ -11,12 +11,12 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        node_version: [14, 16, 18]
+        node_version: [16, 18, 19]
         include:
           - os: macos-latest
-            node_version: 16
+            node_version: 18
           - os: windows-latest
-            node_version: 16
+            node_version: 18
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
