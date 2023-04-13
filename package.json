@@ -81,7 +81,7 @@
     "styled-components": "^5.3.9",
     "typescript": "^5.0.4",
     "vite": "^4.2.1",
-    "webpack": "^5.78.0"
+    "webpack": "^5.79.0"
   },
   "peerDependencies": {
     "react": ">=16",
