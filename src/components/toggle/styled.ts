@@ -9,11 +9,7 @@ export const Knob = styled.div`
   transition: transform 200ms ease-in-out 0s;
 `;
 
-export const Container = styled.label.attrs(
-  ({ isDisabled }: { isDisabled: boolean }) => ({
-    isDisabled,
-  })
-)`
+export const Container = styled.label<{ isDisabled: boolean }>`
   --switch-width: calc(var(--switch-knob-size) + 20px);
   --switch-height: calc(
     var(--switch-knob-size) + 2 * var(--switch-inner-padding)
