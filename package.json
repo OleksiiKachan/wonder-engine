@@ -89,7 +89,7 @@
     "styled-components": ">=6"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=18.0.0"
   },
   "resolutions": {
     "jackspeak": "2.1.1"
