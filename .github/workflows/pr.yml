@@ -11,12 +11,12 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        node_version: [16, 18, 20]
+        node_version: [18, 20, 21]
         include:
           - os: macos-latest
-            node_version: 18
+            node_version: 20
           - os: windows-latest
-            node_version: 18
+            node_version: 20
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
@@ -26,11 +26,8 @@ jobs:
           node-version: ${{ matrix.node_version }}
           cache: yarn
       - name: install
-        run: |
-          yarn install --immutable
+        run: yarn install --immutable
       - name: test
-        run: |
-          yarn test
+        run: yarn test
       - name: build
-        run: |
-          yarn build
+        run: yarn build
