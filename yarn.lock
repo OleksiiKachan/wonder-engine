@@ -2944,10 +2944,10 @@ csstype@3.1.3, csstype@^3.0.2:
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.3.tgz#d80ff294d114fb0e6ac500fbf85b60137d7eff81"
   integrity sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==
 
-cz-customizable@^7.2.1:
-  version "7.2.1"
-  resolved "https://registry.yarnpkg.com/cz-customizable/-/cz-customizable-7.2.1.tgz#71b71ec381e32e0c99c1778f08285b1a760de34e"
-  integrity sha512-Wa3cgG4+IC9zqezwozLbVBIiJ7Cjg1J2hPxvXcp1F3SFjzQzbdiGhOtI1thVfRBnBCX3kvCW63iaP9v+4yYa8w==
+cz-customizable@^7.3.0:
+  version "7.3.0"
+  resolved "https://registry.yarnpkg.com/cz-customizable/-/cz-customizable-7.3.0.tgz#6bbf200af4a596838b0c93988eb2ff3c679296ec"
+  integrity sha512-ExNKEk8SG91ydXO2wph3VptVXZPRM8092WZlzD4hUI1WpFlGAQvTi8x+9rlpTuZzr8XPff9xEIJlx2hAFyEfqg==
   dependencies:
     editor "1.0.0"
     find-config "^1.0.0"
