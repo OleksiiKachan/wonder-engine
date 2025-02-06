@@ -79,7 +79,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-is": "^19.0.0",
-    "styled-components": "^6.1.14",
+    "styled-components": "^6.1.15",
     "typescript": "^5.7.3",
     "vite": "^6.1.0",
     "webpack": "^5.97.1"
