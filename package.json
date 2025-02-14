@@ -82,7 +82,7 @@
     "styled-components": "^6.1.15",
     "typescript": "^5.7.3",
     "vite": "^6.1.0",
-    "webpack": "^5.97.1"
+    "webpack": "^5.98.0"
   },
   "peerDependencies": {
     "react": ">=16",
