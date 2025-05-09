@@ -63,7 +63,7 @@
     "@vitejs/plugin-react": "^4.4.1",
     "babel-jest": "^29.7.0",
     "babel-loader": "^10.0.0",
-    "commitlint": "^19.8.0",
+    "commitlint": "^19.8.1",
     "cross-env": "^7.0.3",
     "cz-customizable": "^7.4.0",
     "eslint": "^9.25.1",
